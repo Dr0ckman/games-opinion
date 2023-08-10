@@ -1,10 +1,10 @@
 <template>
-    <footer class="footer">
+    <footer class="footer mt-4">
         <p>Bárbara Pazos © 2023</p>
     </footer>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .footer {
     background-color: black;
     color: white;
@@ -12,11 +12,11 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-}
 
-p {
-    padding-top: 1rem;
-    opacity: 0.25;
+    p {
+        padding-top: 1rem;
+        opacity: 0.25;
+    }
 }
 </style>
 
