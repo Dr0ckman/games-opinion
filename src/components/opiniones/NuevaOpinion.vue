@@ -1,0 +1,33 @@
+<template>
+    <h3>Escribe tu opinión para el juego (No sé. Acá va el juego)</h3>
+    <div class="container-fluid">
+        <form>
+            <label for="name" class="form-label">Nombre</label>
+            <input type="text" id="name" class="form-control">
+            <br>
+            <label for="opinion" class="form-label">Opinión</label>
+            <input type="text" id="opinion" class="form-control">
+            <br>
+            <input type="button" class="btn btn-primary" value="Agregar">
+        </form>
+    </div>
+
+    <br />
+    <Opinion title="Opinión creada por (( autor ))" content="Contenido de la opinión" />
+</template>
+  
+<script>
+
+import Opinion from './Opinion.vue'
+
+export default {
+    name: 'NuevaOpinion',
+    components: {
+        Opinion
+    }
+}
+</script>
+  
+  <!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="scss"></style>
+  
