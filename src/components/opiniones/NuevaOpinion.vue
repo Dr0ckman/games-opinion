@@ -46,9 +46,6 @@
 
 export default {
     name: 'NuevaOpinion',
-    components: {
-        Opinion
-    },
     data() {
         return {
             visible: false,
