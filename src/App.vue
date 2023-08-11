@@ -7,14 +7,14 @@
 </template>
 
 <style>
-  html {
-    position: relative;
-  }
+html {
+  position: relative;
+}
 
-  .content-wrap {
-    min-height: 100vh;
-    padding-bottom: 3rem;
-  }
+.content-wrap {
+  min-height: 100vh;
+  padding-bottom: 3rem;
+}
 </style>
 
 <script>
@@ -24,7 +24,7 @@ import Footer from '@/components/Footer.vue'
 export default {
   components: {
     Navbar,
-    Footer
+    Footer,
   }
 }
 </script>
