@@ -44,8 +44,6 @@
   
 <script>
 
-import Opinion from './Opinion.vue'
-
 export default {
     name: 'NuevaOpinion',
     components: {
