@@ -11,7 +11,7 @@
             <li class="list-group-item">Metacritic: {{ metacritic }}</li>
         </ul>
         <div class="card-body">
-            <router-link to="/opiniones" class="btn btn-primary">Opinar</router-link>
+            <router-link :to="'opiniones/' + title" class="btn btn-primary">Opinar</router-link>
         </div>
     </div>
 </template>

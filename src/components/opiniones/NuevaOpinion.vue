@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid">
-    <h3>Escribe tu opinión para el juego (No sé. Acá va el juego)</h3>
+    <h3>Escribe tu opinión para el juego {{ $route.params.juego }}</h3>
     <form>
         <label for="name" class="form-label">Nombre</label>
         <input type="text" id="name" class="form-control">
