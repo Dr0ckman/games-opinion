@@ -67,11 +67,7 @@ export default {
             this.$el.querySelector('#name').focus()
         },
         agregarOpinion() {
-            if (this.$el.querySelector('#name').value == '' || this.$el.querySelector('#opinion').value == '') {
-                this.$el.querySelector("template").createElement("div").appendChild()
-                
-            }
-            else {
+            if (this.$el.querySelector('#name').value !== '' || this.$el.querySelector('#opinion').value !== '') {
                 this.visible = true
                 this.title = this.$el.querySelector('#name').value
                 this.content = this.$el.querySelector('#opinion').value
@@ -80,6 +76,9 @@ export default {
                 this.$el.querySelector('#opinion').value = ''
                 this.$el.querySelector('#opinion').setAttribute("disabled", "")
                 this.$el.querySelector('#btn-agregar').setAttribute("disabled", "")
+            }
+            else {
+                //pass
             }
 
         },
