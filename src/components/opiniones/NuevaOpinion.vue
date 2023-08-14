@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid">
-        <h3>Escribe tu opinión para el juego {{ $route.params.juego }}</h3>
+        <h3>Escribe tu opinión para el juego {{ $route.params.juego }}</h3> <!-- Toma el nombre del juego de la URL -->
         <form>
             <label for="name" class="form-label">Nombre</label>
             <input type="text" id="name" class="form-control">
@@ -10,32 +10,11 @@
             <br>
             <input type="button" id="btn-agregar" class="btn btn-primary" value="Agregar" @click="agregarOpinion()">
         </form>
-        <div v-if="visible" class="mt-5">
-            <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            {{ title }}
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                        data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            {{ content }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button id="btn-eliminar" class="btn btn-danger me-2 mt-4" @click="borrarOpinion()">
-                Eliminar
-            </button>
-            <button id="btn-editar" class="btn btn-warning ms-2 mt-4" @click="editarOpinion()">
-                Editar
-            </button>
+        <div id="accordion-zone" class="mt-5" v-for="opinion in listaOpiniones"> <!-- Itera listaOpiniones e inserta componentes de forma dinámica -->
+            <AcordeonOpinion :title="opinion.title" :content="opinion.content"></AcordeonOpinion>
         </div>
-        <div v-if="!visible" class="mt-5">
-            <div class="alert alert-warning" role="alert">
+        <div class="mt-5">
+            <div class="alert alert-warning" role="alert" v-show="visible">
                 <strong>No hay opiniones disponibles</strong>
             </div>
         </div>
@@ -44,55 +23,36 @@
   
 <script>
 
+import AcordeonOpinion from './AcordeonOpinion.vue'
+
 export default {
     name: 'NuevaOpinion',
+    components: {
+        AcordeonOpinion
+    },
     data() {
         return {
-            visible: false,
-            title: '',
-            content: ''
+            listaOpiniones: [],
+            visible: true
         }
+
     },
     methods: {
-        borrarOpinion() {
-            this.visible = false
-            this.title = ''
-            this.content = ''
-            this.$el.querySelector("#btn-agregar").value = "Agregar"
-            this.$el.querySelector('#name').value = ''
-            this.$el.querySelector('#name').removeAttribute("disabled")
-            this.$el.querySelector('#opinion').value = ''
-            this.$el.querySelector('#opinion').removeAttribute("disabled")
-            this.$el.querySelector('#btn-agregar').removeAttribute("disabled")
-            this.$el.querySelector('#name').focus()
-        },
-        agregarOpinion() {
-            if (this.$el.querySelector('#name').value !== '' || this.$el.querySelector('#opinion').value !== '') {
-                this.visible = true
-                this.title = this.$el.querySelector('#name').value
-                this.content = this.$el.querySelector('#opinion').value
-                this.$el.querySelector('#name').value = ''
-                this.$el.querySelector('#name').setAttribute("disabled", "")
-                this.$el.querySelector('#opinion').value = ''
-                this.$el.querySelector('#opinion').setAttribute("disabled", "")
-                this.$el.querySelector('#btn-agregar').setAttribute("disabled", "")
+        agregarOpinion() { // Agrega una opinión a listaOpiniones
+            let opinionTitle = document.querySelector("#name").value
+            let opinionContent = document.querySelector("#opinion").value
+
+            if (opinionTitle !== '' && opinionContent !== '') {
+                this.listaOpiniones.push({ title: opinionTitle, content: opinionContent })
+                this.visible = false
             }
             else {
-                //pass
+                alert("Favor completar los campos requeridos")
             }
-
-        },
-        editarOpinion() {
-            this.$el.querySelector("#btn-agregar").value = "Actualizar"
-            this.$el.querySelector('#name').value = ''
-            this.$el.querySelector('#name').removeAttribute("disabled")
-            this.$el.querySelector('#opinion').value = ''
-            this.$el.querySelector('#opinion').removeAttribute("disabled")
-            this.$el.querySelector('#btn-agregar').removeAttribute("disabled")
-            this.$el.querySelector('#name').focus()
         }
     }
 }
+
 
 
 </script>
