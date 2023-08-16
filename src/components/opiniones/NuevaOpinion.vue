@@ -8,7 +8,9 @@
             <label for="opinion" class="form-label">Opinión</label>
             <textarea id="opinion" rows="5" class="form-control input-opinion"></textarea>
             <br>
-            <input type="button" id="btn-agregar" class="btn btn-primary" value="Agregar" @click="handleOpinion(indexHelper)">
+            <!-- Llama agregarOpinion o actualizarOpinion dependiendo del nombre del botón -->
+            <input type="button" id="btn-agregar" class="btn btn-primary" value="Agregar"
+                @click="handleOpinion(indexHelper)">
         </form>
         <!-- Itera listaOpiniones e inserta componentes de forma dinámica -->
         <div id="accordion-zone" class="mt-5">
@@ -17,16 +19,18 @@
                     <AcordeonOpinion :title="opinion.title" :content="opinion.content + ' (Index: ' + String(index) + ')'"
                         :index="index"></AcordeonOpinion>
                     <div class="mt-2">
-                        <button class="btn btn-danger me-4" @click="eliminarOpinion(index)">Eliminar</button>
+                        <button class="btn btn-danger me-4" @click="eliminarOpinion(index)">Eliminar</button> <!-- Elimina opiniones de listaOpiniones.
+                        El ciclo for de arriba se encarga de quitarlo de la vista -->
                         <button class="btn btn-warning" @click="editarOpinion(index)">Editar</button> <!-- Copia los contenidos de la opinión 
                         a los input, cambia el nombre del botón de "agregar" a "actualizar", cambia el foco al primer input
-                        y pasa el valor de index a handleOpinion -->
+                        y pasa el valor de index a indexHelper -->
                     </div>
                 </div>
 
             </div>
         </div>
-        <div class="mt-5">
+        <div class="mt-5"> <!-- Muestra la alerta sólo cuando no hay opiniones en listaOpiniones. Se usa
+        el lifecycle hook beforeUpdate más abajo -->
             <div class="alert alert-warning" role="alert" v-show="!hideAlert">
                 <strong>No hay opiniones disponibles</strong>
             </div>
@@ -86,6 +90,7 @@ export default {
 
             document.querySelector("#name").value = ''
             document.querySelector("#opinion").value = ''
+            document.querySelector("#btn-agregar").value = "Agregar"
         },
         eliminarOpinion(index) {
             this.listaOpiniones.splice(index, 1)

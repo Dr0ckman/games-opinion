@@ -12,6 +12,7 @@
         </ul>
         <div class="card-body">
             <router-link :to="'opiniones/' + title" class="btn btn-primary">Opinar</router-link>
+            <router-link :to="{path: 'login', query: {game: title}}" class="btn btn-primary ms-3">❤️</router-link>
         </div>
     </div>
 </template>
