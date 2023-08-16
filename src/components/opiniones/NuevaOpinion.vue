@@ -8,7 +8,7 @@
             <label for="opinion" class="form-label">Opinión</label>
             <textarea id="opinion" rows="5" class="form-control input-opinion"></textarea>
             <br>
-            <input type="button" id="btn-agregar" class="btn btn-primary" value="Agregar" @click="agregarOpinion()">
+            <input type="button" id="btn-agregar" class="btn btn-primary" value="Agregar" @click="handleOpinion(indexHelper)">
         </form>
         <!-- Itera listaOpiniones e inserta componentes de forma dinámica -->
         <div id="accordion-zone" class="mt-5">
@@ -18,7 +18,9 @@
                         :index="index"></AcordeonOpinion>
                     <div class="mt-2">
                         <button class="btn btn-danger me-4" @click="eliminarOpinion(index)">Eliminar</button>
-                        <button class="btn btn-warning">Editar</button>
+                        <button class="btn btn-warning" @click="editarOpinion(index)">Editar</button> <!-- Copia los contenidos de la opinión 
+                        a los input, cambia el nombre del botón de "agregar" a "actualizar", cambia el foco al primer input
+                        y pasa el valor de index a handleOpinion -->
                     </div>
                 </div>
 
@@ -45,10 +47,17 @@ export default {
         return {
             listaOpiniones: [],
             hideAlert: false,
+            indexHelper: Number
         }
 
     },
     methods: {
+        handleOpinion(index) {
+            if (document.querySelector('#btn-agregar').value === "Agregar") {
+                this.agregarOpinion()
+            }
+            else { this.actualizarOpinion(index) }
+        },
         agregarOpinion() { // Agrega una opinión a listaOpiniones
             let opinionTitle = document.querySelector("#name").value
             let opinionContent = document.querySelector("#opinion").value
@@ -63,9 +72,34 @@ export default {
             document.querySelector("#name").value = ''
             document.querySelector("#opinion").value = ''
         },
+        actualizarOpinion(index) {
+            let opinionTitle = document.querySelector("#name").value
+            let opinionContent = document.querySelector("#opinion").value
+
+            if (opinionTitle !== '' && opinionContent !== '') {
+                this.listaOpiniones[index] = { title: opinionTitle, content: opinionContent }
+                console.log(this.listaOpiniones)
+            }
+            else {
+                alert("Favor completar los campos requeridos")
+            }
+
+            document.querySelector("#name").value = ''
+            document.querySelector("#opinion").value = ''
+        },
         eliminarOpinion(index) {
             this.listaOpiniones.splice(index, 1)
             console.log(this.listaOpiniones)
+        },
+        editarOpinion(index) {
+            document.querySelector("#name").value = this.listaOpiniones[index].title
+            document.querySelector("#opinion").value = this.listaOpiniones[index].content
+
+            document.querySelector("#btn-agregar").value = 'Actualizar'
+
+            document.querySelector("#name").focus()
+
+            this.indexHelper = index
         }
     },
     beforeUpdate() {
