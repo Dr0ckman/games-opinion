@@ -1,7 +1,6 @@
 <template>
   <Navbar />
   <div class="content-wrap">
-    <font-awesome-icon icon="fa-solid fa-user-secret" />
     <router-view />
   </div>
   <Footer />

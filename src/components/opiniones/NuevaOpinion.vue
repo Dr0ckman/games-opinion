@@ -16,7 +16,7 @@
         <div id="accordion-zone" class="mt-5">
             <div v-for="(opinion, index) in listaOpiniones">
                 <div>
-                    <AcordeonOpinion :title="opinion.title" :content="opinion.content + ' (Index: ' + String(index) + ')'"
+                    <AcordeonOpinion :title="opinion.title" :content="opinion.content"
                         :index="index"></AcordeonOpinion>
                     <div class="mt-2">
                         <button class="btn btn-danger me-4" @click="eliminarOpinion(index)">Eliminar</button> <!-- Elimina opiniones de listaOpiniones.
@@ -82,7 +82,6 @@ export default {
 
             if (opinionTitle !== '' && opinionContent !== '') {
                 this.listaOpiniones[index] = { title: opinionTitle, content: opinionContent }
-                console.log(this.listaOpiniones)
             }
             else {
                 alert("Favor completar los campos requeridos")
@@ -94,7 +93,6 @@ export default {
         },
         eliminarOpinion(index) {
             this.listaOpiniones.splice(index, 1)
-            console.log(this.listaOpiniones)
         },
         editarOpinion(index) {
             document.querySelector("#name").value = this.listaOpiniones[index].title
@@ -108,7 +106,6 @@ export default {
         }
     },
     beforeUpdate() {
-        console.log(this.listaOpiniones)
         if (this.listaOpiniones.length !== 0) {
             this.hideAlert = true
         }
@@ -122,7 +119,6 @@ export default {
 
 </script>
 
-  <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .form-control {
     max-width: 20rem;

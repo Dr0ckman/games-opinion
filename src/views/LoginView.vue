@@ -22,17 +22,6 @@ export default {
             lastName: String,
             game: String
         }
-    },
-    methods: {
-        // handleSentData(e) {
-        //     this.name = e.name
-        //     this.lastName = e.lastName
-        //     this.game = e.game
-
-        //     console.log(this.name)
-        //     console.log(this.lastName)
-        //     console.log(this.game)
-        // }
     }
 }
 
