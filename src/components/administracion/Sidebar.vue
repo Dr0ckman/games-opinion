@@ -2,6 +2,9 @@
     <div class="float-start me-4">
         <div class="sidebar">
             <div class="container-fluid pt-3">
+                <font-awesome-icon icon="fa-solid fa-user" size="lg" class="text-center"/>
+                <br>
+                <br>
                 <span class="mb-1">Bienvenid@</span>
                 <br>
                 <strong>{{ $route.params.id }}</strong>
