@@ -15,11 +15,18 @@ export default {
     name: 'Login',
     methods: {
         buttonHandler() {
-            this.$router.replace({
-                name: 'administracion',
-                params: { id: String(document.querySelector('#name').value) + ' ' + String(document.querySelector('#last-name').value) },
-                query: { game: this.$route.query.game }
-            })
+            if (document.querySelector('#name').value !== '' && document.querySelector('#last-name').value !== '') {
+                this.$router.replace({
+                    name: 'administracion',
+                    params: { id: String(document.querySelector('#name').value) + ' ' + String(document.querySelector('#last-name').value) },
+                    query: { game: this.$route.query.game }
+                })
+
+            }
+            else {
+                alert('Complete los datos requeridos')
+            }
+
         }
     }
 }

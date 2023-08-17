@@ -12,22 +12,22 @@
         </div>
         <hr>
         <h3>Estadísticas</h3>
-        <div class="row">
+        <div class="row justify-content-between">
             <div class="col px-2 py-2 bg-warning">
                 <font-awesome-icon icon="fa-solid fa-flag-checkered" />
-                % de finalización
+                <strong> % de finalización</strong>
                 <hr>
                 17%
             </div>
             <div class="col px-2 py-2 bg-success" style="color: white">
                 <font-awesome-icon icon="fa-solid fa-trophy" />
-                Logros
+                <strong> Logros</strong>
                 <hr>
                 166
             </div>
             <div class="col px-2 py-2 bg-info">
                 <font-awesome-icon icon="fa-solid fa-award" />
-                Recompensas
+                <strong> Recompensas</strong>
                 <hr>
                 200
             </div>
