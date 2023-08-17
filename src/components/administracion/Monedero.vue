@@ -4,6 +4,11 @@
 
 </template>
 
-<script></script>
+<script>
+export default {
+    name: 'Monedero'
+}
+
+</script>
 
 <style scoped lang="scss"></style>
