@@ -12,6 +12,7 @@
         </ul>
         <div class="card-body">
             <router-link :to="'opiniones/' + title" class="btn btn-primary">Opinar</router-link>
+            <!-- Se envía la info del juego a través de queries -->
             <router-link :to="{path: 'login', query: {game: title}}" class="btn btn-primary ms-3">❤️</router-link>
         </div>
     </div>
@@ -30,7 +31,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .card {
     margin: 1rem auto;

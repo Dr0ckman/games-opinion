@@ -29,6 +29,8 @@ export default {
     height: 100vh;
     color: white;
     opacity: 0.9;
+    // Margen negativo porque navbar tiene margen. 
+    // Era esto o modificar todos los otros componentes.
     margin-top: -1.5rem;
 }
 </style>

@@ -14,6 +14,9 @@
 export default {
     name: 'Login',
     methods: {
+        // Cuando ambos campos tienen datos,
+        // reemplaza la ruta actual con la página de administración correspondiente.
+        // De esta manera, la ruta anterior no queda guardada en el historial.
         buttonHandler() {
             if (document.querySelector('#name').value !== '' && document.querySelector('#last-name').value !== '') {
                 this.$router.replace({

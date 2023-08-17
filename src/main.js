@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-/* import specific icons */
+/* Íconos de FontAwesome */
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faFlagCheckered } from '@fortawesome/free-solid-svg-icons'
 import { faTrophy } from '@fortawesome/free-solid-svg-icons'
@@ -13,7 +13,7 @@ import { faAward } from '@fortawesome/free-solid-svg-icons'
 import { faCoins } from '@fortawesome/free-solid-svg-icons'
 
 
-/* add icons to the library */
+/* Añadir íconos a libreria */
 library.add(faUser)
 library.add(faFlagCheckered)
 library.add(faTrophy)
