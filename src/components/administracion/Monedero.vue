@@ -1,14 +1,16 @@
 <template>
     <div>
         <h3>¿Quieres comprar coins para este juego?</h3>
-        <button class="btn btn-warning">
+        <button id="agregar-coins" class="btn btn-warning" @click="updateCurrentValue()">
             <font-awesome-icon icon="fa-solid fa-coins" /> Agregar coins
         </button>
+        <span :style="'display: ' + spanDisplay + '; opacity: 0.75'"><i> Cantidad máxima alcanzada</i></span>
         <hr>
         <h3>Cantidad de coins comprados</h3>
         <div class="progress">
-            <div class="progress-bar bg-danger" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                aria-valuemax="100">Description</div>
+            <div :class="'progress-bar ' + progressBarColor" role="progressbar" :style="'width: ' + String(currentValue * 2) + '%'">
+                {{ currentValue }}
+            </div>
         </div>
         <hr>
         <h3>Estadísticas</h3>
@@ -37,7 +39,36 @@
 
 <script>
 export default {
-    name: 'Monedero'
+    name: 'Monedero',
+    data() {
+        return {
+            currentValue: 0,
+            progressBarColor: 'bg-success',
+            spanDisplay: 'none'
+        }
+
+    },
+    methods: {
+        updateCurrentValue() {
+            if (this.currentValue < 50) {
+                this.currentValue++
+                if(this.currentValue > 20 && this.currentValue <= 30) {
+                    this.progressBarColor = 'bg-warning'
+                }
+                else if(this.currentValue > 30) {
+                    this.progressBarColor = 'bg-danger'
+                }
+                else {
+                    // pass
+                }
+            }
+            else {
+                document.querySelector('#agregar-coins').setAttribute('disabled', '')
+                this.spanDisplay = 'inline'
+            }
+            console.log(this.currentValue)
+        }
+    }
 }
 
 </script>
