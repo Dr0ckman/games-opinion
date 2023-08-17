@@ -66,7 +66,6 @@ export default {
                 document.querySelector('#agregar-coins').setAttribute('disabled', '')
                 this.spanDisplay = 'inline'
             }
-            console.log(this.currentValue)
         }
     }
 }
